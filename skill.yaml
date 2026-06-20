@@ -1,0 +1,284 @@
+name: MGD Backup-Skill
+version: 1.0.0
+author: Michael Gahn (@MichaelGahnDESIGN)
+description: |
+  Universeller, produktionsreifer Backup-Skill für lokale Projekte, Docker,
+  Live-Server und Cloud-Systeme. Mit Integritätsprüfung, Encryption,
+  intelligenten Filtern und Restore-Assistent.
+
+  Unterstützt: Lokal, SMB/NAS, Docker, AWS S3, Azure, Google Cloud.
+
+license: MIT
+repository: https://github.com/MichaelGahnDESIGN/MGD-Backup-Skill
+documentation: https://github.com/MichaelGahnDESIGN/MGD-Backup-Skill/wiki
+
+keywords:
+  - backup
+  - restore
+  - cloud
+  - docker
+  - sicherung
+  - archiv
+  - disaster-recovery
+
+# Kategorie & Tags
+category: infrastructure
+tags:
+  - backup
+  - devops
+  - automation
+  - cloud
+  - security
+  - disaster-recovery
+
+# Vorkehrungen & Anforderungen
+requirements:
+  - bash
+  - tar
+  - gzip
+  - curl (für Cloud-Backups)
+
+commands:
+  # Anfänger-freundlich
+  backup-install:
+    description: Richtet Backup-Ordner und -System ein
+    help: |
+      Initialisiert das Backup-System mit Standardkonfiguration.
+      Erstellt:
+      - ~/.claude/backup/ (Konfiguration & Metadaten)
+      - Backup-Verzeichnis (Speicherort)
+      - Initialisierungs-Skripte
+
+      Interaktiv; keine Admin-Rechte nötig.
+    tags: [setup, einstieg]
+    effort: low
+
+  backup-info:
+    description: Zeigt alle Backups mit Metadaten
+    help: |
+      Listet alle Backups mit:
+      - Größe, Datum, SHA256
+      - Herkunfts-Projekt & Git-Commit
+      - Restore-Anleitung
+
+      Sortierung: Neuste zuerst.
+    tags: [ansicht, info]
+    effort: low
+
+  backup-test:
+    description: Überprüft alle Backups auf Integrität
+    help: |
+      Validiert:
+      - SHA256-Hashing
+      - Archiv-Struktur (tar/gzip/bzip2)
+      - Lesbarkeit
+      - Metadaten-Konsistenz
+
+      Warnt vor defekten/beschädigten Backups.
+    tags: [validierung, wartung]
+    effort: low
+
+  backup-delete:
+    description: Löscht alte Backups (mit Aufbewahrung)
+    help: |
+      Intelligente Rotation:
+      - Fragt: "Wie viele Backups behalten?"
+      - Löscht älteste zuerst
+      - Verifiziert vor Löschung
+      - Backup-Manifest aktualisiert
+
+      Sicher: Interaktive Bestätigung.
+    tags: [rotation, cleanup]
+    effort: low
+
+  backup-uninstall:
+    description: Deinstalliert Backup-System sauber
+    help: |
+      Entfernt:
+      - ~/.claude/backup/ (Konfiguration)
+      - Optionale: Backup-Verzeichnis
+
+      ⚠️ DESTRUKTIV! Fragt nach Bestätigung.
+      Backups können separat gespeichert sein.
+    tags: [cleanup, uninstall]
+    effort: low
+
+  # Assistent-Befehle
+  backup-MASTER:
+    description: Intelligenter Assistent für alle Backup-Vorgänge
+    help: |
+      Haupteinstieg für Nutzer:
+      1. Hauptmenü (Backup erstellen / Wiederherstellen / Ansicht / etc.)
+      2. Projekt/Ziel wählen
+      3. Konfiguration & Verifikation
+      4. Ausführung mit Status-Updates
+
+      Spricht Nutzer-Sprache, keine technischen Details.
+    tags: [assistent, anfänger]
+    effort: medium
+    is_main_assistant: true
+
+  backup-Assistent:
+    description: Interaktiver Assistent (Menü-gesteuert)
+    help: |
+      Wie /backup-MASTER, aber mit erweiterten Optionen:
+      - Snapshot-Einrichtung
+      - Geplante Backups
+      - Cloud-Integration
+
+      Für Nutzer, die Automatisierung einrichten möchten.
+    tags: [assistent, automation]
+    effort: medium
+
+  # Fortgeschrittene Befehle
+  backup-restore:
+    description: Assistent zum Wiederherstellen von Backups
+    help: |
+      Guided Restore:
+      1. Backup auswählen (Liste mit Größe/Datum/SHA256)
+      2. Zielort eingeben
+      3. Abhängigkeiten (git, npm, composer, flutter)
+      4. Verifikation & Integrität
+      5. Restore mit Fortschritt
+
+      Unterstützt: lokal, Docker, Remote-Server
+    tags: [restore, recovery]
+    effort: medium
+
+  backup-cloud:
+    description: Einrichtet Cloud-Backup (AWS S3, Azure, Google Cloud)
+    help: |
+      Cloud-Assistent:
+      1. Cloud-Provider wählen (AWS, Azure, GCP, Wasabi, etc.)
+      2. Credentials eingeben (sicher, wird NICHT gespeichert)
+      3. Bucket/Container auswählen
+      4. Encryption & Retention konfigurieren
+      5. Test-Upload
+
+      Langfristige Datensicherheit off-site.
+    tags: [cloud, remote]
+    effort: medium
+
+  backup-Snapshot:
+    description: Sichert nur neue/geänderte Dateien
+    help: |
+      Inkrementelles Backup:
+      1. Basiert auf letztem Backup
+      2. Nur neue/geänderte Dateien
+      3. Deutlich schneller & kleiner
+      4. Automatische Verkettung (für Restore)
+
+      Ideal für häufige Backups (tägl./stündl.)
+    tags: [snapshot, incremental]
+    effort: medium
+
+  # Experte & Entwicklung
+  backup-GODMODE:
+    description: Erweiterte Befehle und Entwickler-Tools
+    help: |
+      GODMODE — Nur für Profis!
+
+      Enthält:
+      - Low-Level-Archiv-Ops (tar, gzip, bzip2 Optionen)
+      - Rohes Scripting (Cron, systemd, Launchd)
+      - Custom-Filter schreiben
+      - Manuelle Encryption/Decryption
+      - Restore mit einzelnen Dateien
+      - Backup-Metadaten editieren
+      - Backup-Repair-Tools
+
+      ⚠️ Keine Sicherheitsgarantien. Nutzer trägt Verantwortung.
+    tags: [expert, developer]
+    effort: high
+    dangerous: true
+
+# Configuration Schema
+config_schema:
+  backup_dir:
+    type: string
+    default: ~/.claude/backups
+    description: Speicherort für Backups
+
+  retention_days:
+    type: integer
+    default: 30
+    description: Backups älter als N Tage löschen (0 = manuell)
+
+  encryption:
+    type: boolean
+    default: false
+    description: AES-256 für alle Backups aktivieren
+
+  compression:
+    type: string
+    default: bzip2
+    enum: [gzip, bzip2, xz]
+    description: Kompressions-Algorithmus
+
+  cloud_provider:
+    type: string
+    description: "Primärer Cloud-Provider (aws, azure, gcp, none)"
+
+  log_level:
+    type: string
+    default: info
+    enum: [debug, info, warn, error]
+    description: Logging-Stufe
+
+# Integrationen
+integrations:
+  - name: git
+    optional: true
+    description: Git-Commit-Info in Backup-Metadaten speichern
+
+  - name: docker
+    optional: true
+    description: Docker-Container-Backups unterstützen
+
+  - name: aws-s3
+    optional: true
+    description: AWS S3 Cloud-Backup
+
+  - name: azure-blob
+    optional: true
+    description: Azure Blob Storage Cloud-Backup
+
+  - name: gcp-storage
+    optional: true
+    description: Google Cloud Storage Cloud-Backup
+
+# Sicherheit
+security:
+  requires_authentication: false
+  handles_secrets: true
+  secret_filtering:
+    - pattern: "*.env*"
+      reason: "Environment-Variablen (Tokens, API-Keys)"
+    - pattern: "*.key"
+      reason: "Private Keys"
+    - pattern: "*.pem"
+      reason: "Zertifikate"
+    - pattern: "*.sql"
+      reason: "Datenbank-Dumps mit Produktivdaten"
+    - pattern: "PlayTest*"
+      reason: "Test-Artefakte (lokal-only)"
+    - pattern: ".env*"
+      reason: "Alle .env-Dateien (Secrets)"
+
+# Changelog
+changelog:
+  1.0.0:
+    date: 2026-06-20
+    items:
+      - "Initiales Release"
+      - "11 Befehle implementiert"
+      - "Cloud-Integration (AWS S3, Azure, GCP)"
+      - "Vollständige Dokumentation auf Deutsch"
+
+# Metadaten
+metadata:
+  maintainer: Michael Gahn
+  website: https://michaelgahn.design
+  github: https://github.com/MichaelGahnDESIGN
+  language: de
+  audience: [developers, devops, teams]

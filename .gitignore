@@ -1,0 +1,53 @@
+# Betriebssystem
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Sensible Daten (NIEMALS in GitHub!)
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+id_rsa*
+credentials.*
+secrets.*
+*.sql
+*.sql.gz
+*.dump
+config/backup-locations.local.yaml
+
+# Backups & Temporär (erzeugt von Skill)
+backups/
+.backup-cache/
+*.backup
+*.tmp
+temp/
+logs/
+
+# Node/Npm (falls benötigt)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Vagrant & Docker
+.vagrant/
+.docker/
+
+# Lokale Test-Ausgaben
+test-output/
+test-backups/
