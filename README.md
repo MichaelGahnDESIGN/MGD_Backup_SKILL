@@ -132,6 +132,19 @@ Bugs melden oder Features vorschlagen? Öffne ein [Issue](https://github.com/Mic
 
 ---
 
-**Erstellt von:** Michael Gahn (@MichaelGahnDESIGN)  
-**Letztes Update:** 2026-06-20  
-**Version:** 1.0.0
+## Verwandte MGD Projekte
+
+| Projekt | Beschreibung |
+|---------|-------------|
+| [MGD-ProjectClean-Skill](https://github.com/MichaelGahnDESIGN/MGD-ProjectClean-Skill) | Abschluss- und Aufräum-Workflow |
+| [MGD-App-Updater-Skill](https://github.com/MichaelGahnDESIGN/MGD-App-Updater-Skill) | Software-Update-Systeme planen und implementieren |
+| [MGD-DEV-Skill](https://github.com/MichaelGahnDESIGN/MGD-DEV-Skill) | Release, Sync, Backup und Wissensdokumentation |
+| [MGD-AI-Basic-Projektordner](https://github.com/MichaelGahnDESIGN/MGD-AI-Basic-Projektordner) | Projektvorlage für KI-Agenten |
+
+→ Alle öffentlichen Projekte: [github.com/MichaelGahnDESIGN](https://github.com/MichaelGahnDESIGN)
+
+---
+
+## Impressum
+
+Angaben gemäß § 5 DDG — Siehe [`IMPRESSUM.md`](IMPRESSUM.md).
