@@ -107,7 +107,7 @@ Wenn alles grün ist:
 
 # 2. Lokal pushen
 cd ~/GitHub-Skills/MGD-Backup-Skill
-git remote add origin https://github.com/MichaelGahnDESIGN/MGD-Backup-Skill.git
+git remote add origin https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL.git
 git push -u origin main
 
 # 3. GitHub Release erstellen (manuell)

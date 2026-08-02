@@ -174,7 +174,7 @@ aws:
 Falls du ein Sicherheitsproblem entdeckst:
 
 1. **NICHT öffentlich posten** (nicht als GitHub Issue)
-2. **Sende private E-Mail** an: `security@example.com`
+2. **Sende private E-Mail** an: `michaelgahndesign@gmail.com`
 3. **Beschreibe genau:**
    - Was ist das Problem?
    - Wie kann man es reproduzieren?

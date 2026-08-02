@@ -14,7 +14,7 @@ Willkommen! Dieser Leitfaden führt dich durch die ersten Schritte mit dem Backu
 
 ```bash
 # Claude Code CLI
-claude config add-skill https://github.com/MichaelGahnDESIGN/MGD-Backup-Skill
+claude config add-skill https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL
 
 # Oder manuell:
 # Settings → Skills → "MGD-Backup-Skill" → Enable
@@ -196,4 +196,4 @@ A: In der Basis-Version: Nein. Mit `/backup-GODMODE` möglich.
 
 ---
 
-**Probleme?** Öffne ein [Issue auf GitHub](https://github.com/MichaelGahnDESIGN/MGD-Backup-Skill/issues).
+**Probleme?** Öffne ein [Issue auf GitHub](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/issues).

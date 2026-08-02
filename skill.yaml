@@ -9,8 +9,8 @@ description: |
   Unterstützt: Lokal, SMB/NAS, Docker, AWS S3, Azure, Google Cloud.
 
 license: MIT
-repository: https://github.com/MichaelGahnDESIGN/MGD-Backup-Skill
-documentation: https://github.com/MichaelGahnDESIGN/MGD-Backup-Skill/wiki
+repository: https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL
+documentation: https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/wiki
 
 keywords:
   - backup

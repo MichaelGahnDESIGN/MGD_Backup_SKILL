@@ -118,4 +118,4 @@ Dieses Projekt wurde geprüft auf:
 
 ---
 
-**Noch Fragen zur Sicherheit?** [GitHub Issues](https://github.com/MichaelGahnDESIGN/MGD-Backup-Skill/issues) oder [E-Mail](mailto:michaelgahndesign@gmail.com).
+**Noch Fragen zur Sicherheit?** [GitHub Issues](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/issues) oder [E-Mail](mailto:michaelgahndesign@gmail.com).

@@ -288,9 +288,9 @@ Wenn dein Problem hier nicht gelöst ist:
    tail -f ~/.claude/backups/logs/*.log
    ```
 
-2. **GitHub Issues:** [MGD-Backup-Skill Issues](https://github.com/MichaelGahnDESIGN/MGD-Backup-Skill/issues)
+2. **GitHub Issues:** [MGD-Backup-Skill Issues](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/issues)
 
-3. **E-Mail:** security@example.com (für Sicherheitsprobleme)
+3. **E-Mail:** michaelgahndesign@gmail.com (für Sicherheitsprobleme)
 
 ---
 

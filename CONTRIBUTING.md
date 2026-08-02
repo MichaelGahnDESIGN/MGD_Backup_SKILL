@@ -4,7 +4,7 @@ Danke, dass du einen Beitrag leisten möchtest! 🙏
 
 ## 🐛 Bugs melden
 
-1. Öffne ein [Issue](https://github.com/MichaelGahnDESIGN/MGD-Backup-Skill/issues)
+1. Öffne ein [Issue](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/issues)
 2. Beschreibe:
    - Was hast du gemacht?
    - Was ist schiefgelaufen?
@@ -13,7 +13,7 @@ Danke, dass du einen Beitrag leisten möchtest! 🙏
 
 ## 💡 Features vorschlagen
 
-1. Diskutiere in einem [Issue](https://github.com/MichaelGahnDESIGN/MGD-Backup-Skill/issues)
+1. Diskutiere in einem [Issue](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/issues)
 2. Erkläre:
    - Wofür brauchst du das Feature?
    - Wie würde es funktionieren?
@@ -94,4 +94,4 @@ brew install yamllint      # YAML-Linter
 
 ---
 
-**Fragen?** [GitHub Discussions](https://github.com/MichaelGahnDESIGN/MGD-Backup-Skill/discussions) oder [Issues](https://github.com/MichaelGahnDESIGN/MGD-Backup-Skill/issues).
+**Fragen?** [GitHub Discussions](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/discussions) oder [Issues](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/issues).
