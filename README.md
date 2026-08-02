@@ -4,44 +4,45 @@
 [![Status: Active](https://img.shields.io/badge/Status-Active-brightgreen.svg)](#)
 [![Language: Deutsch](https://img.shields.io/badge/Language-Deutsch-blue.svg)](#)
 
-Ein universeller, produktionsreifer Backup-Skill für **Claude Code**, **ChatGPT Codex** und andere KI-Assistenten. Sichere lokale Projekte, Docker-Container, Live-Server und Cloud-Systeme mit einer einheitlichen Schnittstelle.
+Ein Skill für **Claude Code**, **ChatGPT Codex** und andere KI-Assistenten, der lokale Projekte, Docker-Container, Live-Server und Cloud-Systeme über eine einheitliche Sammlung von Slash-Befehlen sichert.
 
-## ✨ Features
+## Das Problem
 
-- **Vollständige Backup-Verwaltung**: Erstellen, Testen, Verifizieren, Wiederherstellen
-- **Mehrere Ziele**: Lokal, SMB/NAS, Docker, Live-Server, Cloud (AWS S3, Azure, etc.)
-- **Intelligente Filterung**: Lokal-only-Dateien (Secrets, Datenbank-Dumps, Caches) automatisch ausgeschlossen
-- **Sicherheit**: SHA256-Hashing, Integritätsprüfungen, optional verschlüsselt
-- **Automatisierung**: Geplante Backups, Snapshots nur für neue Dateien, Rotation
-- **Assistenten**: Guided Setup, Restore-Wizard, Cloud-Integration
-- **Mehrsprachig**: Deutsch + Englisch (erweiterbar)
+KI-Agenten arbeiten oft an vielen Projekten gleichzeitig, ohne dass es einen einheitlichen Weg gibt, sie zu sichern. Jedes Projekt bekommt eigene Ad-hoc-Skripte, niemand prüft automatisch, ob ein Backup tatsächlich wiederherstellbar ist, und Secrets (`.env`, Keys, Datenbank-Dumps) landen leicht versehentlich in der Sicherung. Der MGD Backup-Skill definiert dafür elf Slash-Befehle mit automatischer Secrets-Filterung und SHA256-Integritätsprüfung.
 
-## 🚀 Schnelleinstieg
+## Installation
 
-### Installation (lokal)
+> [!NOTE]
+> **👤 FÜR ENTWICKLER** — Das Repository ist kein fertiges Programm, sondern eine Skill-Definition: `skill.yaml` beschreibt Befehle, Konfigurationsschema und Sicherheitsregeln, die Markdown-Dateien liefern die Anleitungen dazu. Es gibt keine Shell-Skripte im Repo — ein KI-Assistent führt die eigentlichen Bash-Befehle (`tar`, `curl`, `git` …) zur Laufzeit aus, gesteuert durch diese Dokumente.
+>
+> ```bash
+> # Skill-Verzeichnis klonen
+> git clone https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL.git ~/.claude/skills/backup
+>
+> # Oder manuell in Claude Code:
+> # Settings → Skills → "MGD-Backup-Skill" → Enable
+> ```
 
-```bash
-# Skill-Verzeichnis klonen
-git clone https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL.git ~/.claude/skills/backup
+## Erste Schritte
 
-# Oder manuell in Claude Code:
-# Settings → Skills → "MGD-Backup-Skill" → Enable
-```
+> [!TIP]
+> **🤖 FÜR KI-AGENTEN** — Einstieg für einen neuen Nutzer: zuerst `/backup-install` (einmalig, richtet Verzeichnisse und Konfiguration ein), danach `/backup-MASTER` (Haupt-Assistent für alle Backup-Aufgaben) oder `/backup-info` zur Übersicht bestehender Backups. Nutze ausschließlich die elf in `skill.yaml` definierten Befehle.
+>
+> ```bash
+> # 1. Backup-System einrichten
+> /backup-install
+>
+> # 2. Erstes Backup erstellen
+> /backup-MASTER
+>
+> # 3. Backups anzeigen
+> /backup-info
+> ```
 
-### Erste Schritte
+> [!WARNING]
+> **⚠️ FALLSTRICK** — Ein schnellerer Befehl `/backup-quick` wird in `docs/wiki/01-anfaengerleitfaden.md` als Alternativweg angedeutet, existiert aber nicht — die Datei kommentiert ihn selbst als „noch nicht implementiert in dieser Basis-Version". Er taucht auch nicht in `skill.yaml` auf. Für einen Erstnutzer bleibt `/backup-MASTER` der einzige dokumentierte Weg zum ersten Backup.
 
-```bash
-# 1. Backup-System einrichten
-/backup-install
-
-# 2. Erstes Backup erstellen
-/backup-MASTER
-
-# 3. Backups anzeigen
-/backup-info
-```
-
-## 📖 Befehle
+## Die wichtigsten Befehle
 
 | Befehl | Funktion | Schwierigkeit |
 |--------|----------|---------------|
@@ -49,99 +50,56 @@ git clone https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL.git ~/.claude/sk
 | `/backup-test` | Überprüft alle Backups auf Integrität | Anfänger |
 | `/backup-delete` | Löscht alte Backups (mit Aufbewahrung) | Anfänger |
 | `/backup-info` | Zeigt alle Backups mit Metadaten | Anfänger |
-| `/backup-restore` | Assistent zum Wiederherstellen | Fortgeschritten |
-| `/backup-cloud` | Einrichtet Cloud-Backup (AWS S3, Azure, etc.) | Fortgeschritten |
 | `/backup-uninstall` | Deinstalliert Backup-System sauber | Anfänger |
 | `/backup-MASTER` | Intelligenter Assistent für alle Backup-Vorgänge | Anfänger |
+| `/backup-restore` | Assistent zum Wiederherstellen | Fortgeschritten |
+| `/backup-cloud` | Richtet Cloud-Backup ein (AWS S3, Azure, Google Cloud) | Fortgeschritten |
 | `/backup-Snapshot` | Sichert nur neue/geänderte Dateien | Fortgeschritten |
-| `/backup-Assistent` | Interaktiver Assistent (Menü-gesteuert) | Anfänger |
-| `/backup-GODMODE` | Erweiterte Befehle und Entwickler-Tools | Experte |
+| `/backup-Assistent` | Interaktiver Assistent (Menü-gesteuert) | Fortgeschritten |
+| `/backup-GODMODE` | Erweiterte Befehle und Entwickler-Tools (`dangerous: true`) | Experte |
 
-## 📚 Dokumentation
+Automatisch ausgeschlossen werden laut `skill.yaml` (`security.secret_filtering`): `*.env*`/`.env*`, `*.key`, `*.pem`, `*.sql`, `PlayTest*`.
 
-- **[Anfängerleitfaden](docs/wiki/01-anfaengerleitfaden.md)** — Installation, erste Backup, Restore
-- **[Befehlsreferenz](docs/wiki/02-befehlsreferenz.md)** — Alle Befehle im Detail
-- **[Konfiguration](docs/wiki/03-konfiguration.md)** — Backup-Quellen, Ziele, Filter einrichten
-- **[Cloud-Integration](docs/wiki/04-cloud-integration.md)** — AWS S3, Azure, Google Cloud
-- **[Sicherheit & Best Practices](docs/wiki/05-sicherheit.md)** — Encryption, Authentifizierung, Audit
-- **[Fehlerbehandlung](docs/wiki/06-fehlerbehandlung.md)** — Häufige Probleme und Lösungen
-- **[API & Entwicklung](docs/wiki/07-entwicklung.md)** — Skill erweitern, Custom-Ziele
+> [!WARNING]
+> **⚠️ FALLSTRICK** — Verschlüsselung ist **nicht** der Standard: `config_schema.encryption` in `skill.yaml` hat den Typ `boolean` mit Default `false`. Ein frisch installiertes System (`/backup-install` mit Standardwerten) erzeugt also unverschlüsselte Backups, auch wenn README und `SECURITY.md` Sicherheit als „höchste Priorität" bewerben. AES-256 muss aktiv über `/backup-install` (Frage „Verschlüsselung aktivieren?") oder in der Konfiguration eingeschaltet werden.
 
-## 🔒 Sicherheit
+## Grenzen
 
-Dieser Skill wurde mit **Sicherheit als höchste Priorität** entwickelt:
+- Keine ausführbaren Skripte im Repo: ohne einen KI-Agenten, der die Befehle in echte Bash-Aufrufe übersetzt, passiert nichts von allein.
+- Verschlüsselung ist standardmäßig deaktiviert (siehe Fallstrick oben) — für sensible Daten muss sie aktiv eingeschaltet werden.
+- Selektiver Restore einzelner Dateien ist in der Basisversion nicht vorgesehen; nur über den als `dangerous: true` markierten Befehl `/backup-GODMODE`.
+- Native Datenbank-Backups (PostgreSQL/MySQL) sind laut `CHANGELOG.md` erst für v1.1+ geplant; aktuell müssen Datenbank-Dumps manuell erstellt werden (z. B. `pg_dump`, `mysqldump`).
+- Wasabi, DigitalOcean Spaces und Minio tauchen im interaktiven Menü von `/backup-cloud` auf, sind aber unter `integrations:` in `skill.yaml` nicht als eigene Integration deklariert — nur AWS S3, Azure Blob Storage und Google Cloud Storage.
+- Getestet auf macOS, Linux und Docker; unter Windows kann es laut Dokumentation zu Pfad-Problemen (`\` vs. `/`) kommen.
 
-- ✅ **KEINE sensiblen Daten in GitHub**: Secrets, Keys, Tokens gehören in `.env` (`.gitignore`)
-- ✅ **Automatische Filterung**: `.env`, `*.key`, `*.pem`, `*.sql`, Datenbank-Dumps, PlayTest-Artefakte
-- ✅ **Integritätsprüfung**: SHA256-Hashing für alle Backups
-- ✅ **Verschlüsselung optional**: AES-256 für sensitive Backups
-- ✅ **Audit-Logging**: Alle Backup-Aktionen werden protokolliert
+## Wiki
 
-**⚠️ Wichtig**: Überprüfe deine Konfiguration in `.claude/backup/config.yaml` — stelle sicher, dass keine Secrets in den Backup-Quellen landen!
-
-## 💡 Beispiele
-
-### Lokales Projekt sichern
-
-```bash
-/backup-MASTER
-# → Wähle "Lokales Projekt"
-# → Wähle Projektverzeichnis
-# → Automatischer Backup mit SHA256-Verifikation
-```
-
-### Zu SMB/NAS sichern
-
-```bash
-/backup-cloud
-# → Wähle "SMB/NAS"
-# → smb://nas-server/backups eingeben
-# → Benutzer/Passwort (wird NICHT gespeichert)
-# → Automatisches Backup
-```
-
-### Scheduled Backups
-
-```bash
-/backup-install
-# → Wähle "Geplante Backups einrichten"
-# → Zeitplan: täglich 02:00 Uhr
-# → Aufbewahrung: 7 Tage
-```
-
-## 🛠️ Requirements
-
-- **Claude Code** (v1.0+) oder **ChatGPT Codex**
-- **Bash/Zsh** (für lokale Backups)
-- **curl** oder **aws-cli** (für Cloud-Backups, optional)
-- **tar/gzip/bzip2** (für Kompression)
-
-## 📋 Lizenz
-
-MIT License — siehe [LICENSE](LICENSE)
-
-## 🤝 Beitrag
-
-Bugs melden oder Features vorschlagen? Öffne ein [Issue](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/issues) oder ein [Pull Request](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/pulls).
-
-## 📞 Support
-
-- **Dokumentation**: [docs/wiki/](docs/wiki/)
-- **Beispiele**: [examples/](examples/)
-- **Issues**: [GitHub Issues](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/issues)
-
----
+| Seite | Inhalt |
+|---|---|
+| [Home](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/wiki) | Überblick, alle elf Befehle, Fallstricke |
+| [Schnellstart](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/wiki/Schnellstart) | Installation und erstes Backup |
+| [Befehlsreferenz](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/wiki/Befehlsreferenz) | Alle elf Befehle im Detail |
+| [Konfiguration](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/wiki/Konfiguration) | `skill.yaml`-Konfigurationsschema |
+| [Cloud-Integration](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/wiki/Cloud-Integration) | AWS S3, Azure, Google Cloud |
+| [Sicherheit](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/wiki/Sicherheit) | Secrets-Filterung, Verschlüsselung, Meldeweg |
+| [Praxisbeispiele](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/wiki/Praxisbeispiele) | Flutter, Node.js, Django, Website, Docker, Multi-Projekt |
+| [Fehlerbehebung](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/wiki/Fehlerbehebung) | Häufige Fehler und FAQ |
+| [Mitwirken](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/wiki/Mitwirken) | Bugs melden, Beiträge einreichen, Style-Guide |
 
 ## Verwandte MGD Projekte
 
 | Projekt | Beschreibung |
 |---------|-------------|
-| [MGD-ProjectClean-Skill](https://github.com/MichaelGahnDESIGN/MGD_ProjectClean_SKILL) | Abschluss- und Aufräum-Workflow |
-| [MGD-App-Updater-Skill](https://github.com/MichaelGahnDESIGN/MGD_Software-Updater_SKILL) | Software-Update-Systeme planen und implementieren |
-| [MGD-DEV-Skill](https://github.com/MichaelGahnDESIGN/MGD_DEV_SKILL) | Release, Sync, Backup und Wissensdokumentation |
-| [MGD-AI-Basic-Projektordner](https://github.com/MichaelGahnDESIGN/MGD_AI-Basic-Projektordner_TOOL) | Projektvorlage für KI-Agenten |
+| [MGD_ProjectClean_SKILL](https://github.com/MichaelGahnDESIGN/MGD_ProjectClean_SKILL) | Abschluss- und Aufräum-Workflow |
+| [MGD_Software-Updater_SKILL](https://github.com/MichaelGahnDESIGN/MGD_Software-Updater_SKILL) | Software-Update-Systeme planen und implementieren |
+| [MGD_DEV_SKILL](https://github.com/MichaelGahnDESIGN/MGD_DEV_SKILL) | Release, Sync, Backup und Wissensdokumentation |
+| [MGD_AI-Basic-Projektordner_TOOL](https://github.com/MichaelGahnDESIGN/MGD_AI-Basic-Projektordner_TOOL) | Projektvorlage für KI-Agenten |
 
 → Alle öffentlichen Projekte: [github.com/MichaelGahnDESIGN](https://github.com/MichaelGahnDESIGN)
+
+## Lizenz
+
+MIT License — siehe [LICENSE](LICENSE)
 
 ---
 
