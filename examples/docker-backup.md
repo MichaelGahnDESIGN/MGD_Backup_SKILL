@@ -53,4 +53,4 @@ docker-compose unpause postgres
 
 ---
 
-**[← Zurück zu Beispiele](../examples.md)**
+**[← Zurück zur Wiki-Übersicht](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/wiki/Praxisbeispiele)**

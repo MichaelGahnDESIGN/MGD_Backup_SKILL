@@ -67,4 +67,4 @@ Komprimiert:     2.1 MB (bzip2)
 
 ---
 
-**[← Zurück zu Beispiele](../examples.md)**
+**[← Zurück zur Wiki-Übersicht](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/wiki/Praxisbeispiele)**

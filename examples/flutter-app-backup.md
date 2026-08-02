@@ -175,4 +175,4 @@ A: Täglich (Snapshot) + Wöchentlich (Vollbackup). Mit geplanten Backups automa
 
 ---
 
-**[← Zurück zu Beispiele](../examples.md)**
+**[← Zurück zur Wiki-Übersicht](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/wiki/Praxisbeispiele)**

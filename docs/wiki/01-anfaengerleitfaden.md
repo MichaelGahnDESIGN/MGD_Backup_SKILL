@@ -191,7 +191,7 @@ A: In der Basis-Version: Nein. Mit `/backup-GODMODE` möglich.
 ## 📚 Nächste Schritte
 
 - Lies die [Befehlsreferenz](02-befehlsreferenz.md) für alle Details
-- Erkunde [Cloud-Integration](04-cloud-integration.md) für Remote-Backups
+- Erkunde [Cloud-Integration](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/wiki/Cloud-Integration) für Remote-Backups
 - Schau [Sicherheit & Best Practices](05-sicherheit.md) für Verschlüsselung
 
 ---

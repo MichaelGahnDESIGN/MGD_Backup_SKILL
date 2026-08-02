@@ -76,4 +76,4 @@ Datenbank (JSON): 450 MB → komprimiert (gz): 45 MB
 
 ---
 
-**[← Zurück zu Beispiele](../examples.md)**
+**[← Zurück zur Wiki-Übersicht](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/wiki/Praxisbeispiele)**

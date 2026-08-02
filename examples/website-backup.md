@@ -49,4 +49,4 @@ scp user@production.com:/tmp/db.sql ~/backups/myapp_db_20260620.sql
 
 ---
 
-**[← Zurück zu Beispiele](../examples.md)**
+**[← Zurück zur Wiki-Übersicht](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/wiki/Praxisbeispiele)**

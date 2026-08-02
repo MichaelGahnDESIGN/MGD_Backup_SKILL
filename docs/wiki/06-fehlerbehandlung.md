@@ -294,4 +294,4 @@ Wenn dein Problem hier nicht gelöst ist:
 
 ---
 
-**[← Zurück zu Wiki](../wiki.md)**
+**[← Zurück zur Wiki-Übersicht](https://github.com/MichaelGahnDESIGN/MGD_Backup_SKILL/wiki)**
